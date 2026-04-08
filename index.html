@@ -1,0 +1,2449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MPR — Mulheres Plenas e Reinantes | Alessandra Breda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ═══════════════════════════════════════
+   ROOT & RESET
+═══════════════════════════════════════ */
+:root {
+  --navy:          #0d1f35;
+  --navy-mid:      #122845;
+  --blue-section:  #0f2644;
+  --blue-light:    #1a3a5c;
+  --gold:          #C9A84C;
+  --gold-light:    #E8D49A;
+  --gold-dark:     #B8942A;
+  --gold-gradient: linear-gradient(135deg, #B8942A 0%, #E8D49A 50%, #C9A84C 100%);
+  --cream:         #FAF7F2;
+  --white:         #FFFFFF;
+  --text-dark:     #1a1a2e;
+  --text-mid:      #3d4a5c;
+  --text-light:    #6b7a8d;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════
+   KEYFRAMES
+═══════════════════════════════════════ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleInVertical {
+  from { transform: scaleY(0); opacity: 0; }
+  to   { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes crownPulse {
+  0%, 100% { text-shadow: 0 0 0 rgba(201,168,76,0); }
+  50%       { text-shadow: 0 0 22px rgba(201,168,76,0.65); }
+}
+
+/* ═══════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.7s cubic-bezier(0.25,0.1,0.25,1),
+    transform 0.7s cubic-bezier(0.25,0.1,0.25,1);
+  will-change: transform, opacity;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════
+   LAYOUT BASE
+═══════════════════════════════════════ */
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+section { padding: 110px 0; }
+
+.section-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::after {
+  content: '';
+  display: inline-block;
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3vw, 46px);
+  font-weight: 500;
+  line-height: 1.22;
+  color: var(--navy);
+  margin-bottom: 24px;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+
+/* ═══════════════════════════════════════
+   SEÇÃO 1: HERO
+═══════════════════════════════════════ */
+.hero {
+  background: var(--cream);
+  display: grid;
+  grid-template-columns: 60fr 40fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -180px; right: -120px;
+  width: 640px; height: 640px;
+  background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Linha vertical dourada animada */
+.hero-divider {
+  position: absolute;
+  left: 60%;
+  top: 12%;
+  bottom: 12%;
+  width: 3px;
+  background: var(--gold-gradient);
+  z-index: 10;
+  transform-origin: top center;
+  transform: scaleY(0);
+  animation: scaleInVertical 1.1s cubic-bezier(0.25,0.1,0.25,1) 0.5s forwards;
+}
+
+/* Hero esquerda */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 64px 64px 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-left > * {
+  animation: fadeInUp 0.8s cubic-bezier(0.25,0.1,0.25,1) forwards;
+  opacity: 0;
+}
+.hero-left > *:nth-child(1) { animation-delay: 0.15s; }
+.hero-left > *:nth-child(2) { animation-delay: 0.30s; }
+.hero-left > *:nth-child(3) { animation-delay: 0.45s; }
+.hero-left > *:nth-child(4) { animation-delay: 0.60s; }
+.hero-left > *:nth-child(5) { animation-delay: 0.75s; }
+
+.logo-area { margin-bottom: 36px; }
+
+.logo-crown {
+  font-size: 24px;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 6px;
+  cursor: default;
+}
+.logo-crown:hover {
+  animation: crownPulse 1.2s ease infinite;
+}
+
+.logo-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.logo-name em { font-style: italic; font-weight: 400; }
+
+.eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 3vw, 48px);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--navy);
+  margin-bottom: 32px;
+}
+.hero-headline em { font-style: italic; color: var(--gold); }
+
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text-mid);
+  margin-bottom: 52px;
+  max-width: 500px;
+}
+
+/* CTA Button */
+.cta-primary {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  background: var(--navy);
+  color: var(--gold-light);
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 20px 44px;
+  border: 1px solid var(--navy);
+  position: relative;
+  overflow: hidden;
+  align-self: flex-start;
+  transition: letter-spacing 0.4s ease, border-color 0.4s ease;
+}
+.cta-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold-gradient);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.cta-primary span {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: color 0.4s ease;
+}
+.cta-primary:hover { letter-spacing: 3.5px; border-color: var(--gold-dark); }
+.cta-primary:hover::before { opacity: 1; }
+.cta-primary:hover span { color: var(--navy); }
+.cta-arrow { display: inline-block; transition: transform 0.3s ease; }
+.cta-primary:hover .cta-arrow { transform: translateX(4px); }
+
+/* Hero direita */
+.hero-right {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy-mid);
+}
+.hero-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(13,31,53,0.18) 0%,
+    transparent 40%,
+    rgba(13,31,53,0.25) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+/* Foto absolute para não inflar a altura do grid */
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+}
+.hero-photo-credit {
+  position: absolute;
+  bottom: 28px; left: 24px;
+  z-index: 2;
+  color: rgba(255,255,255,0.3);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════
+   SEÇÃO 2: DOR (branco)
+═══════════════════════════════════════ */
+.pain-section { background: var(--white); }
+
+.pain-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: center;
+}
+
+.pain-intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--text-mid);
+  margin-bottom: 28px;
+}
+.pain-intro strong { font-weight: 500; color: var(--navy); }
+
+.pain-list {
+  list-style: none;
+  margin: 32px 0;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+.pain-list li {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  color: var(--text-mid);
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: color 0.2s;
+}
+.pain-list li:hover { color: var(--navy); }
+.pain-list li::before {
+  content: '—';
+  color: var(--gold);
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+.pain-closing {
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--navy);
+  margin-top: 36px;
+  padding-left: 24px;
+  border-left: 3px solid var(--gold);
+  line-height: 1.55;
+}
+
+.pain-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.weight-card {
+  background: var(--cream);
+  padding: 30px 36px;
+  border-left: 2px solid var(--gold);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.weight-card:hover {
+  transform: translateX(4px);
+  box-shadow: -3px 0 0 var(--gold);
+}
+.weight-card-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.weight-card-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--navy);
+  line-height: 1.45;
+}
+.weight-card.dark {
+  background: var(--navy);
+  border-left-color: var(--gold);
+}
+.weight-card.dark .weight-card-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.65;
+}
+
+/* ═══════════════════════════════════════
+   SEÇÃO 3: QUEBRA DE CRENÇA (navy)
+═══════════════════════════════════════ */
+.belief-section {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+.belief-section::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.07);
+  pointer-events: none;
+}
+.belief-section::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1060px; height: 1060px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.04);
+  pointer-events: none;
+}
+
+.belief-inner {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.belief-section .section-label {
+  justify-content: center;
+  color: var(--gold);
+}
+.belief-section .section-label::after { display: none; }
+.belief-section .section-label::before {
+  content: '';
+  display: inline-block;
+  width: 48px; height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+.belief-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 3.4vw, 52px);
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 52px;
+}
+.belief-title em { font-style: italic; color: var(--gold-light); }
+
+.belief-choices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  margin-bottom: 56px;
+}
+
+.choice-item {
+  background: rgba(13,31,53,0.85);
+  padding: 36px 32px;
+  text-align: center;
+  position: relative;
+  transition: background 0.3s;
+}
+.choice-item:hover { background: rgba(201,168,76,0.07); }
+
+.choice-or {
+  position: absolute;
+  right: -14px; top: 50%;
+  transform: translateY(-50%);
+  background: var(--gold);
+  color: var(--navy);
+  font-family: 'Jost', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 5px 9px;
+  z-index: 5;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.choice-item:nth-child(3) .choice-or,
+.choice-item:nth-child(6) .choice-or { display: none; }
+
+.choice-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+}
+
+.belief-answer {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 2.2vw, 30px);
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.5;
+  max-width: 680px;
+  margin: 0 auto 36px;
+}
+
+.castle-metaphor {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.45);
+}
+
+/* ═══════════════════════════════════════
+   SEÇÃO 4: SOLUÇÃO / PILARES (creme)
+═══════════════════════════════════════ */
+.solution-section { background: var(--cream); }
+
+.solution-inner {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 90px;
+  align-items: start;
+}
+
+.solution-left {
+  position: sticky;
+  top: 100px;
+}
+.solution-left p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--text-mid);
+  margin-top: 20px;
+}
+.solution-note {
+  margin-top: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--text-mid);
+  font-style: italic;
+  border-top: 1px solid rgba(0,0,0,0.07);
+  padding-top: 20px;
+}
+
+.pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pillar {
+  background: var(--white);
+  padding: 40px 44px;
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 28px;
+  align-items: start;
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.25,0.1,0.25,1), box-shadow 0.35s ease;
+  overflow: hidden;
+}
+.pillar::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--gold-gradient);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.35s ease;
+}
+.pillar:hover { transform: translateX(6px); box-shadow: -4px 0 0 var(--gold); }
+.pillar:hover::after { transform: scaleY(1); }
+
+.pillar-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--gold);
+  opacity: 0.55;
+  line-height: 1;
+  user-select: none;
+}
+.pillar-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.pillar-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--text-mid);
+}
+
+/* ═══════════════════════════════════════
+   SEÇÃO 5: RESULTADOS (branco)
+═══════════════════════════════════════ */
+.results-section { background: var(--white); }
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--cream);
+  margin-top: 60px;
+}
+
+/* Linha de fecho centralizada quando há itens ímpares */
+.results-grid-row2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--cream);
+  max-width: calc(75% - 1.5px);
+  /* 3 de 4 colunas */
+}
+
+.result-card {
+  background: var(--white);
+  padding: 44px 32px;
+  text-align: center;
+  transition: background 0.35s ease;
+  cursor: default;
+}
+.result-card:hover { background: var(--navy); }
+
+.result-icon {
+  font-size: 24px;
+  color: var(--gold);
+  margin-bottom: 18px;
+  display: block;
+  transition: color 0.35s ease;
+}
+.result-card:hover .result-icon { color: var(--gold-light); }
+
+.result-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text-mid);
+  transition: color 0.35s ease;
+}
+.result-card:hover .result-text { color: var(--gold-light); }
+
+/* Container para 7 cards: 4 na primeira linha + 3 na segunda */
+.results-grid-wrap {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--cream);
+}
+.results-row {
+  display: grid;
+  gap: 2px;
+  background: var(--cream);
+}
+.results-row.row-4 { grid-template-columns: repeat(4, 1fr); }
+.results-row.row-3 { grid-template-columns: repeat(3, 1fr); }
+
+.results-closing {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--navy);
+  text-align: center;
+  margin: 60px auto 0;
+  padding: 44px 40px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════
+   SEÇÃO 6: PARA QUEM (azul navy)
+═══════════════════════════════════════ */
+.audience-section {
+  background: var(--blue-section);
+  position: relative;
+  overflow: hidden;
+}
+.audience-section::before {
+  content: '';
+  position: absolute;
+  bottom: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.audience-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.audience-section .section-label { color: var(--gold); }
+.audience-section .section-label::after { background: var(--gold); opacity: 0.4; }
+
+.audience-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 36px;
+  line-height: 1.35;
+}
+
+.audience-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.audience-list li {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: rgba(255,255,255,0.75);
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.04);
+  border-left: 2px solid var(--gold);
+  line-height: 1.5;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: background 0.25s;
+}
+.audience-list li:hover { background: rgba(201,168,76,0.07); }
+.audience-list li::before {
+  content: '✓';
+  color: var(--gold);
+  font-size: 12px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+}
+
+.audience-list.no li {
+  border-left-color: rgba(255,255,255,0.15);
+  opacity: 0.55;
+}
+.audience-list.no li:hover { opacity: 0.75; }
+.audience-list.no li::before {
+  content: '×';
+  color: rgba(255,255,255,0.4);
+}
+
+.audience-closing {
+  margin-top: 36px;
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: rgba(201,168,76,0.7);
+  padding-left: 20px;
+  border-left: 2px solid rgba(201,168,76,0.3);
+  line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════
+   SEÇÃO 7: BIO (creme)
+═══════════════════════════════════════ */
+.bio-section { background: var(--cream); }
+
+.bio-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 90px;
+  align-items: center;
+}
+
+.bio-photo-frame {
+  position: relative;
+  aspect-ratio: 3/4;
+  max-width: 400px;
+}
+.bio-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+.bio-frame-border {
+  position: absolute;
+  bottom: -18px; right: -18px;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+  border: 1px solid var(--gold);
+  opacity: 0.35;
+  z-index: 0;
+}
+
+.bio-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  line-height: 1.9;
+  color: var(--text-mid);
+  margin-bottom: 20px;
+}
+.bio-text strong { font-weight: 500; color: var(--navy); }
+
+/* Proof cards — exatamente como no documento */
+.bio-proofs {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.bio-proof {
+  padding: 22px 24px;
+  background: var(--white);
+  border-top: 2px solid var(--gold);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.bio-proof:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(13,31,53,0.08);
+}
+.bio-proof-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-mid);
+  line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════
+   SEÇÃO 8: COMO FUNCIONA (navy)
+═══════════════════════════════════════ */
+.how-section { background: var(--navy); }
+
+.how-section .section-label { color: var(--gold); }
+.how-section .section-label::after { background: var(--gold); opacity: 0.4; }
+.how-section .section-title { color: var(--white); }
+
+.how-intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.6);
+  margin-top: 16px;
+  max-width: 540px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+  background: rgba(255,255,255,0.04);
+}
+
+.step {
+  background: var(--navy);
+  padding: 52px 44px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s ease;
+}
+.step:hover { background: var(--blue-light); }
+
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 90px;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(201,168,76,0.07);
+  position: absolute;
+  top: -16px; right: 16px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.step-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.step-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.step-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.55);
+}
+
+.how-closing {
+  margin-top: 52px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.55);
+  font-style: italic;
+  max-width: 560px;
+}
+
+.how-note {
+  text-align: center;
+  margin-top: 52px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-style: italic;
+  color: rgba(201,168,76,0.7);
+}
+
+/* ═══════════════════════════════════════
+   SEÇÃO 9: DIAGNÓSTICO (creme)
+═══════════════════════════════════════ */
+.diag-section { background: var(--cream); }
+
+.diag-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: start;
+}
+
+.diag-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 2.5vw, 38px);
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.3;
+  margin-bottom: 28px;
+}
+.diag-title em { font-style: italic; color: var(--gold); }
+
+.diag-intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  line-height: 1.85;
+  color: var(--text-mid);
+  margin-bottom: 28px;
+}
+
+.diag-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+.diag-list li {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: var(--text-mid);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 18px;
+  background: var(--white);
+  border-left: 2px solid var(--gold);
+  transition: transform 0.25s;
+}
+.diag-list li:hover { transform: translateX(4px); }
+.diag-list li::before {
+  content: '✦';
+  color: var(--gold);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.diag-closing {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1.55;
+  padding-left: 24px;
+  border-left: 3px solid var(--gold);
+}
+
+.diag-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Ornamento visual para o diagnóstico */
+.diag-ornament {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 auto;
+}
+.diag-ornament::before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.1);
+}
+.diag-ornament::after {
+  content: '';
+  position: absolute;
+  inset: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.07);
+}
+.diag-ornament-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--navy);
+  text-align: center;
+  line-height: 1.6;
+  max-width: 220px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+.diag-ornament-crown {
+  display: block;
+  font-size: 32px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+/* ═══════════════════════════════════════
+   SEÇÃO 10: FAQ (navy)
+═══════════════════════════════════════ */
+.faq-section { background: var(--navy); }
+
+.faq-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faq-section .section-label { color: var(--gold); }
+.faq-section .section-label::after { background: var(--gold); opacity: 0.4; }
+.faq-section .section-title { color: var(--white); }
+.faq-section .section-title em { color: var(--gold-light); }
+
+.faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 28px 0;
+  cursor: pointer;
+}
+.faq-item:first-of-type { border-top: 1px solid rgba(255,255,255,0.08); }
+
+.faq-question {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  line-height: 1.4;
+  user-select: none;
+}
+.faq-toggle {
+  color: var(--gold);
+  font-size: 24px;
+  flex-shrink: 0;
+  transition: transform 0.35s ease;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  line-height: 1;
+  margin-top: 1px;
+}
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+.faq-answer {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.55);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.42s ease, padding-top 0.42s ease;
+}
+.faq-item.open .faq-answer {
+  max-height: 260px;
+  padding-top: 20px;
+}
+
+/* ═══════════════════════════════════════
+   SEÇÃO 11: CTA FINAL (creme)
+═══════════════════════════════════════ */
+.cta-section {
+  background: var(--white);
+  padding: 140px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gold-gradient);
+  z-index: 1;
+}
+.cta-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold-gradient);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.cta-bg-text {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(100px, 16vw, 200px);
+  font-style: italic;
+  font-weight: 700;
+  color: rgba(13,31,53,0.03);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.cta-section .container { position: relative; z-index: 2; }
+
+.cta-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+}
+.cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 3vw, 48px);
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.3;
+  max-width: 800px;
+  margin: 0 auto 28px;
+}
+.cta-title em { font-style: italic; color: var(--gold); }
+
+.cta-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 300;
+  color: var(--text-mid);
+  margin: 0 auto 60px;
+  line-height: 1.8;
+  max-width: 560px;
+}
+
+.cta-form {
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.cta-form input {
+  background: var(--cream);
+  border: 1px solid rgba(0,0,0,0.1);
+  color: var(--text-dark);
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  padding: 18px 24px;
+  outline: none;
+  transition: border-color 0.3s, background 0.3s;
+  width: 100%;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+.cta-form input::placeholder { color: var(--text-light); letter-spacing: 0.5px; }
+.cta-form input:focus {
+  border-color: var(--gold);
+  background: var(--white);
+}
+
+.cta-submit {
+  background: var(--navy);
+  color: var(--gold-light);
+  border: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 22px 44px;
+  cursor: pointer;
+  transition: letter-spacing 0.35s ease, background 0.35s ease, color 0.35s ease;
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 0;
+}
+.cta-submit:hover { background: var(--gold); color: var(--navy); letter-spacing: 4px; }
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer {
+  background: #070f1a;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  color: rgba(201,168,76,0.7);
+  letter-spacing: 2px;
+}
+.footer-logo em { font-style: italic; }
+.footer-copy {
+  font-size: 11px;
+  color: rgba(255,255,255,0.18);
+  letter-spacing: 0.5px;
+}
+.footer-ig {
+  font-size: 12px;
+  color: rgba(201,168,76,0.5);
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-ig:hover { color: var(--gold); }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — TABLET ≤ 1024px
+═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .container { padding: 0 32px; }
+
+  .hero { grid-template-columns: 55fr 45fr; }
+  .hero-left { padding: 70px 48px 70px 56px; }
+
+  .solution-inner { grid-template-columns: 1fr 1.5fr; gap: 60px; }
+  .diag-inner { gap: 60px; }
+  .bio-inner { gap: 60px; }
+
+  .results-row.row-4 { grid-template-columns: repeat(2, 1fr); }
+  .results-row.row-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — MOBILE ≤ 768px
+═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  section { padding: 72px 0; }
+  .container { padding: 0 20px; }
+
+  /* ── Hero ── */
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .hero-right {
+    order: -1;
+    height: 65vw;
+  }
+  .hero-left {
+    padding: 52px 20px 60px;
+    order: 1;
+  }
+  .hero-divider { display: none; }
+  .logo-area { margin-bottom: 36px; }
+  .hero-headline { font-size: clamp(26px, 7vw, 38px); }
+  .hero-sub { font-size: 18px; max-width: 100%; margin-bottom: 36px; }
+  .cta-primary { align-self: stretch; justify-content: center; }
+
+  /* ── Dor ── */
+  .pain-inner { grid-template-columns: 1fr; gap: 48px; }
+  .pain-intro { font-size: 18px; }
+  .pain-list li { font-size: 18px; }
+  .pain-closing { font-size: 19px; }
+
+  /* ── Crença ── */
+  .belief-choices { grid-template-columns: 1fr; }
+  .choice-or { display: none !important; }
+  .choice-item { padding: 24px 20px; }
+  .belief-answer { font-size: 18px; }
+
+  /* ── Solução ── */
+  .solution-inner { grid-template-columns: 1fr; gap: 48px; }
+  .solution-left { position: static; }
+  .pillar { padding: 28px 24px; grid-template-columns: 40px 1fr; gap: 16px; }
+  .pillar-num { font-size: 28px; }
+
+  /* ── Resultados ── */
+  .results-row.row-4 { grid-template-columns: 1fr 1fr; }
+  .results-row.row-3 { grid-template-columns: 1fr 1fr; }
+  .result-card { padding: 32px 20px; }
+
+  /* ── Para quem ── */
+  .audience-inner { grid-template-columns: 1fr; gap: 52px; }
+  .audience-list li { font-size: 17px; padding: 13px 16px; }
+
+  /* ── Bio ── */
+  .bio-inner { grid-template-columns: 1fr; gap: 48px; }
+  .bio-photo-frame {
+    max-width: 100%;
+    aspect-ratio: 4/3;
+  }
+  .bio-frame-border { display: none; }
+  .bio-text { font-size: 18px; }
+  .bio-proofs { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .bio-proof { padding: 16px 18px; }
+  .bio-proof-label { font-size: 13px; }
+
+  /* ── Como funciona ── */
+  .steps { grid-template-columns: 1fr; }
+  .step { padding: 40px 28px; }
+  .step-num { font-size: 64px; right: 8px; top: -10px; }
+
+  /* ── Diagnóstico ── */
+  .diag-inner { grid-template-columns: 1fr; gap: 48px; }
+  .diag-right { display: none; } /* oculta ornamento no mobile */
+  .diag-title { font-size: clamp(22px, 6vw, 32px); }
+
+  /* ── FAQ ── */
+  .faq-inner { padding: 0; }
+  .faq-question { font-size: 17px; }
+  .faq-answer { font-size: 17px; }
+
+  /* ── CTA ── */
+  .cta-section { padding: 90px 0; }
+  .cta-title { font-size: clamp(24px, 6vw, 38px); }
+  .cta-sub { font-size: 18px; margin-bottom: 44px; }
+  .cta-form input { padding: 16px 18px; }
+  .cta-submit { padding: 20px 32px; }
+
+  /* ── Footer ── */
+  footer {
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+    padding: 36px 20px;
+  }
+
+  /* ── Resultados closing ── */
+  .results-closing { font-size: 18px; padding: 32px 20px; }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — SMALL MOBILE ≤ 480px
+═══════════════════════════════════════ */
+@media (max-width: 480px) {
+  .hero-right { min-height: 70vw; max-height: 80vw; }
+  .results-row.row-4,
+  .results-row.row-3 { grid-template-columns: 1fr; }
+  .bio-proofs { grid-template-columns: 1fr; }
+  .audience-inner { gap: 44px; }
+  .pillar { grid-template-columns: 1fr; }
+  .pillar-num { font-size: 22px; }
+}
+
+/* ═══════════════════════════════════════
+   CTA STRIPS INTERMEDIÁRIOS
+═══════════════════════════════════════ */
+.cta-strip {
+  background: var(--white);
+  border-top: 1px solid rgba(201,168,76,0.2);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  padding: 40px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.cta-strip-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--navy);
+}
+
+.cta-strip-btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  background: transparent;
+  color: var(--navy);
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 16px 40px;
+  border: 1px solid var(--navy);
+  transition: letter-spacing 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.cta-strip-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--navy);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+  z-index: 0;
+}
+.cta-strip-btn span {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.35s ease;
+}
+.cta-strip-btn:hover { letter-spacing: 4px; }
+.cta-strip-btn:hover::before { transform: scaleX(1); }
+.cta-strip-btn:hover span { color: var(--gold-light); }
+
+.cta-strip--dark {
+  background: var(--blue-section);
+  border-top-color: rgba(201,168,76,0.15);
+  border-bottom-color: rgba(201,168,76,0.15);
+}
+.cta-strip--dark .cta-strip-text { color: rgba(255,255,255,0.85); }
+
+.cta-strip-btn--gold {
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+.cta-strip-btn--gold::before { background: var(--gold); }
+.cta-strip-btn--gold:hover span { color: var(--navy); }
+
+.cta-strip--cream {
+  background: var(--cream);
+  border-top-color: rgba(201,168,76,0.2);
+  border-bottom-color: rgba(201,168,76,0.2);
+}
+
+/* ═══════════════════════════════════════
+   FORMULÁRIO EM 2 ETAPAS
+═══════════════════════════════════════ */
+.cta-form-wrapper {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.form-steps-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+.form-step-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-light);
+  background: transparent;
+  transition: all 0.4s ease;
+  flex-shrink: 0;
+}
+.form-step-dot.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--gold-light);
+}
+.form-step-dot.done {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
+}
+
+.form-step-line {
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: rgba(0,0,0,0.12);
+  margin: 0 8px;
+  position: relative;
+}
+.form-step-line::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--gold);
+  transition: width 0.5s ease;
+}
+.form-step-line.filled::after { width: 100%; }
+
+.cta-form-step {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.cta-form-step.hidden { display: none; }
+
+.form-step-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* Inputs das etapas herdam o estilo base */
+.cta-form-step input[type="text"],
+.cta-form-step input[type="tel"],
+.cta-form-step input[type="email"] {
+  background: var(--cream);
+  border: 1px solid rgba(0,0,0,0.1);
+  color: var(--text-dark);
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  padding: 18px 24px;
+  outline: none;
+  transition: border-color 0.3s, background 0.3s;
+  width: 100%;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+.cta-form-step input[type="text"]::placeholder,
+.cta-form-step input[type="tel"]::placeholder,
+.cta-form-step input[type="email"]::placeholder { color: var(--text-light); letter-spacing: 0.5px; }
+.cta-form-step input[type="text"]:focus,
+.cta-form-step input[type="tel"]:focus,
+.cta-form-step input[type="email"]:focus {
+  border-color: var(--gold);
+  background: var(--white);
+}
+
+/* Perguntas de qualificação */
+.form-question { display: flex; flex-direction: column; gap: 12px; }
+
+.form-question-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+
+.form-question + .form-question {
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.form-options { display: flex; flex-direction: column; gap: 8px; }
+
+.form-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+.form-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0; height: 0;
+}
+.form-option span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 20px;
+  background: var(--cream);
+  border: 1px solid rgba(0,0,0,0.08);
+  color: var(--text-mid);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  line-height: 1.4;
+  transition: all 0.25s ease;
+}
+.form-option span::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.5);
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+.form-option:hover span {
+  background: rgba(201,168,76,0.06);
+  border-color: rgba(201,168,76,0.4);
+  color: var(--navy);
+}
+.form-option input[type="radio"]:checked + span {
+  background: rgba(201,168,76,0.08);
+  border-color: var(--gold);
+  color: var(--navy);
+}
+.form-option input[type="radio"]:checked + span::before {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: inset 0 0 0 3px rgba(250,247,242,0.9);
+}
+
+@media (max-width: 768px) {
+  .cta-strip { padding: 32px 20px; gap: 16px; }
+  .cta-strip-text { font-size: 19px; }
+  .cta-strip-btn { padding: 14px 28px; width: 100%; justify-content: center; }
+  .form-step-dot { width: 28px; height: 28px; font-size: 12px; }
+  .form-question-label { font-size: 17px; }
+  .form-option span { font-size: 16px; padding: 13px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     SEÇÃO 1: HERO
+══════════════════════════════════════ -->
+<section class="hero" aria-label="Hero — Mentoria MPR">
+
+  <div class="hero-divider" aria-hidden="true"></div>
+
+  <div class="hero-left">
+    <div class="logo-area">
+      <span class="logo-crown" aria-hidden="true">♛</span>
+      <span class="logo-name">Alessandra <em>Breda</em></span>
+    </div>
+
+    <span class="eyebrow">Mentoria MPR</span>
+
+    <h1 class="hero-headline">
+      Você não foi feita para crescer nos negócios e, ao mesmo tempo,
+      ver sua vida com Deus, seu casamento e sua família
+      <em>saírem do lugar.</em>
+    </h1>
+
+    <p class="hero-sub">
+      A Mentoria Mulheres Plenas e Reinantes foi criada para mulheres que já conquistaram muita coisa, mas entenderam que não faz sentido crescer por fora e continuar em desordem por dentro.
+    </p>
+
+    <a href="#diagnostico" class="cta-primary" aria-label="Agendar diagnóstico MPR">
+      <span>Quero agendar diagnóstico <span class="cta-arrow">→</span></span>
+    </a>
+  </div>
+
+  <div class="hero-right">
+    <img
+      src="./COLORIDAS/GHR08160.jpg"
+      alt="Alessandra Breda — mentora MPR"
+      class="hero-photo"
+    />
+    <div class="hero-photo-credit" aria-hidden="true">@alessandrabreda</div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════
+     SEÇÃO 2: DOR
+══════════════════════════════════════ -->
+<section class="pain-section" aria-label="O que está travando">
+  <div class="container">
+    <div class="pain-inner">
+
+      <div class="pain-left">
+        <span class="section-label">O que está travando</span>
+        <h2 class="section-title">O que tem travado muitas mulheres fortes não é falta de <em>capacidade.</em></h2>
+
+        <p class="pain-intro">
+          É <strong>excesso de peso</strong> e falta de ordem.<br><br>
+          Muitas mulheres aprenderam a dar conta de tudo.
+        </p>
+
+        <ul class="pain-list">
+          <li>Dar conta da casa</li>
+          <li>Dar conta do trabalho</li>
+          <li>Dar conta do negócio</li>
+          <li>Dar conta da família</li>
+          <li>Dar conta dos problemas</li>
+          <li>Dar conta até do que nem deveria estar nas mãos delas</li>
+        </ul>
+
+        <p class="pain-intro">
+          Só que isso cobra um preço.<br>
+          Porque uma mulher pode até seguir por um tempo carregando tudo sozinha. Mas isso não sustenta uma vida plena.
+        </p>
+
+        <blockquote class="pain-closing">
+          "Vitórias pela metade não combinam com a vida que Deus planejou para você."
+        </blockquote>
+      </div>
+
+      <div class="pain-right">
+        <div class="weight-card reveal">
+          <div class="weight-card-label">Quando tudo pesa</div>
+          <div class="weight-card-text">A mente pesa. A rotina pesa.</div>
+        </div>
+        <div class="weight-card reveal">
+          <div class="weight-card-label">Quando os papéis confundem</div>
+          <div class="weight-card-text">A casa pesa. As decisões pesam.</div>
+        </div>
+        <div class="weight-card reveal">
+          <div class="weight-card-label">Quando a bênção vira desgaste</div>
+          <div class="weight-card-text">Até aquilo que deveria ser bênção começa a virar desgaste.</div>
+        </div>
+        <div class="weight-card dark reveal">
+          <div class="weight-card-label">Resultado</div>
+          <div class="weight-card-text">Quando a vida com Deus, o casamento, a família e os negócios deixam de caminhar em equilíbrio, tudo começa a pesar mais — e a mulher que deveria florescer começa a apenas sobreviver.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SEÇÃO 3: QUEBRA DE CRENÇA
+══════════════════════════════════════ -->
+<section class="belief-section" aria-label="Quebrando crenças">
+  <div class="container">
+    <div class="belief-inner">
+
+      <span class="section-label">Quebrando crenças</span>
+
+      <h2 class="belief-title">
+        Você não precisa <em>escolher</em><br>entre crescer e viver bem.
+      </h2>
+
+      <div class="belief-choices">
+        <div class="choice-item reveal">
+          <div class="choice-text">crescer nos negócios</div>
+          <span class="choice-or" aria-hidden="true">ou</span>
+        </div>
+        <div class="choice-item reveal">
+          <div class="choice-text">cuidar da vida pessoal</div>
+          <span class="choice-or" aria-hidden="true">ou</span>
+        </div>
+        <div class="choice-item reveal">
+          <div class="choice-text">ter um casamento forte</div>
+        </div>
+        <div class="choice-item reveal">
+          <div class="choice-text">prosperar financeiramente</div>
+          <span class="choice-or" aria-hidden="true">ou</span>
+        </div>
+        <div class="choice-item reveal">
+          <div class="choice-text">avançar profissionalmente</div>
+          <span class="choice-or" aria-hidden="true">ou</span>
+        </div>
+        <div class="choice-item reveal">
+          <div class="choice-text">manter a vida espiritual em ordem</div>
+        </div>
+      </div>
+
+      <p class="belief-answer reveal">
+        "É possível crescer sem se perder. É possível prosperar sem viver esgotada. É possível construir sem deixar a casa emocional cair. É possível viver com mais equilíbrio, mais clareza e mais paz."
+      </p>
+
+      <p class="castle-metaphor reveal">Um castelo não fica de pé com um só pilar.</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SEÇÃO 4: SOLUÇÃO / PILARES
+══════════════════════════════════════ -->
+<section class="solution-section" aria-label="Os pilares da MPR">
+  <div class="container">
+    <div class="solution-inner">
+
+      <div class="solution-left">
+        <span class="section-label">A solução</span>
+        <h2 class="section-title">A MPR é para a mulher que cansou de viver apagando incêndio em áreas importantes da própria vida.</h2>
+        <p>A Mentoria Mulheres Plenas e Reinantes foi criada para ajudar mulheres a colocarem a vida em ordem nas três áreas que sustentam tudo: vida com Deus, família e casamento, negócios.</p>
+        <p class="solution-note">Não é mais um conteúdo para motivar por alguns dias. Não é mais uma mentoria para encher a cabeça de informação. É um processo para a mulher olhar com verdade para a própria vida, entender o que está fora do lugar e começar um caminho de mudança com direção.</p>
+      </div>
+
+      <div class="pillars">
+
+        <article class="pillar reveal">
+          <div class="pillar-num" aria-hidden="true">01</div>
+          <div>
+            <h3 class="pillar-title">Vida com Deus</h3>
+            <p class="pillar-text">Para fortalecer sua fé, sua clareza e sua direção. Porque nenhuma área floresce quando a raiz está fragilizada.</p>
+          </div>
+        </article>
+
+        <article class="pillar reveal">
+          <div class="pillar-num" aria-hidden="true">02</div>
+          <div>
+            <h3 class="pillar-title">Família e casamento</h3>
+            <p class="pillar-text">Para olhar com verdade para sua casa, seus relacionamentos e o lugar que cada coisa precisa ocupar.</p>
+          </div>
+        </article>
+
+        <article class="pillar reveal">
+          <div class="pillar-num" aria-hidden="true">03</div>
+          <div>
+            <h3 class="pillar-title">Negócios e vida profissional</h3>
+            <p class="pillar-text">Para que seu crescimento não continue acontecendo às custas da sua paz, da sua identidade e da sua vida pessoal.</p>
+          </div>
+        </article>
+
+        <article class="pillar reveal">
+          <div class="pillar-num" aria-hidden="true">04</div>
+          <div>
+            <h3 class="pillar-title">Postura e clareza</h3>
+            <p class="pillar-text">Para que você pare de viver no automático e volte a enxergar sua vida com mais firmeza, consciência e direção.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP A — após Pilares -->
+<div class="cta-strip">
+  <p class="cta-strip-text">Entende que este é o seu momento?</p>
+  <a href="#diagnostico" class="cta-strip-btn" aria-label="Dar o primeiro passo">
+    <span>Quero dar o primeiro passo <span class="cta-arrow">→</span></span>
+  </a>
+</div>
+
+<!-- ══════════════════════════════════════
+     SEÇÃO 5: RESULTADOS
+══════════════════════════════════════ -->
+<section class="results-section" aria-label="O que muda com a MPR">
+  <div class="container">
+    <div style="max-width:640px">
+      <span class="section-label">O que muda</span>
+      <h2 class="section-title">O que essa jornada pode <em>mudar</em> em você</h2>
+    </div>
+
+    <!-- 7 cards do documento: 4 na linha 1, 3 na linha 2 -->
+    <div class="results-grid-wrap">
+      <div class="results-row row-4">
+        <article class="result-card reveal">
+          <span class="result-icon" aria-hidden="true">✦</span>
+          <p class="result-text">Mais clareza sobre quem você é e sobre o momento que está vivendo</p>
+        </article>
+        <article class="result-card reveal">
+          <span class="result-icon" aria-hidden="true">✦</span>
+          <p class="result-text">Mais proximidade com Deus e mais direção para tomar decisões</p>
+        </article>
+        <article class="result-card reveal">
+          <span class="result-icon" aria-hidden="true">✦</span>
+          <p class="result-text">Mudança de postura e mais consciência sobre o que está pesando na sua vida hoje</p>
+        </article>
+        <article class="result-card reveal">
+          <span class="result-icon" aria-hidden="true">✦</span>
+          <p class="result-text">Mais equilíbrio entre fé, família e trabalho</p>
+        </article>
+      </div>
+      <div class="results-row row-3">
+        <article class="result-card reveal">
+          <span class="result-icon" aria-hidden="true">✦</span>
+          <p class="result-text">Menos confusão interna</p>
+        </article>
+        <article class="result-card reveal">
+          <span class="result-icon" aria-hidden="true">✦</span>
+          <p class="result-text">Uma nova forma de olhar para sua vida, seu casamento e seus negócios</p>
+        </article>
+        <article class="result-card reveal">
+          <span class="result-icon" aria-hidden="true">✦</span>
+          <p class="result-text">Uma vida vivida com mais ordem, clareza, paz e direção</p>
+        </article>
+      </div>
+    </div>
+
+    <blockquote class="results-closing">
+      "A mulher certa não sai desse processo apenas emocionada.<br>
+      Sai mais lúcida, mais firme e mais consciente do que precisa fazer."
+    </blockquote>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SEÇÃO 6: PARA QUEM É / NÃO É
+══════════════════════════════════════ -->
+<section class="audience-section" aria-label="Para quem é a MPR">
+  <div class="container">
+    <div class="audience-inner">
+
+      <div class="audience-block">
+        <span class="section-label">Para quem é</span>
+        <h3 class="audience-title">A MPR foi criada para mulheres que já entenderam que não querem apenas conquistar mais. Querem viver melhor.</h3>
+        <ul class="audience-list">
+          <li class="reveal">Empresária, profissional liberal, herdeira, sucessora ou mulher do agro</li>
+          <li class="reveal">Já carrega responsabilidades importantes</li>
+          <li class="reveal">Sente que cresceu em algumas áreas, mas outras estão ficando para trás</li>
+          <li class="reveal">Percebe que está cansada de sustentar tudo sozinha</li>
+          <li class="reveal">Quer viver com mais ordem, clareza, paz e direção</li>
+          <li class="reveal">Está pronta para entrar em um processo sério de mudança</li>
+          <li class="reveal">Valoriza profundidade, verdade e direcionamento</li>
+        </ul>
+      </div>
+
+      <div class="audience-block">
+        <span class="section-label">Para quem não é</span>
+        <h3 class="audience-title">A MPR não foi criada para mulheres curiosas ou para quem quer apenas consumir conteúdo sem colocar nada em prática.</h3>
+        <ul class="audience-list no">
+          <li class="reveal">Quer só motivação momentânea</li>
+          <li class="reveal">Não está pronta para mudar postura e fazer ajustes reais</li>
+          <li class="reveal">Procura respostas rápidas para questões profundas</li>
+          <li class="reveal">Não tem disponibilidade emocional, prática e financeira para um processo premium</li>
+          <li class="reveal">Quer apenas entender por cima, sem real intenção de entrar em uma jornada séria</li>
+        </ul>
+        <p class="audience-closing reveal">A MPR é para mulheres que sabem que não podem continuar do mesmo jeito.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP B — após Para Quem -->
+<div class="cta-strip cta-strip--dark">
+  <p class="cta-strip-text">Se você se reconheceu aqui, o próximo passo é uma conversa.</p>
+  <a href="#diagnostico" class="cta-strip-btn cta-strip-btn--gold" aria-label="Agendar avaliação">
+    <span>Quero agendar minha avaliação <span class="cta-arrow">→</span></span>
+  </a>
+</div>
+
+<!-- ══════════════════════════════════════
+     SEÇÃO 7: SOBRE ALESSANDRA
+══════════════════════════════════════ -->
+<section class="bio-section" aria-label="Sobre Alessandra Breda">
+  <div class="container">
+    <div class="bio-inner">
+
+      <div class="bio-photo-frame reveal">
+        <img
+          src="./COLORIDAS/GHR08141.jpg"
+          alt="Retrato de Alessandra Mallon Breda"
+          class="bio-photo"
+          loading="lazy"
+        />
+        <div class="bio-frame-border" aria-hidden="true"></div>
+      </div>
+
+      <div class="bio-content">
+        <span class="section-label">Quem conduz essa jornada</span>
+        <h2 class="section-title">Alessandra<br><em>Mallon Breda</em></h2>
+
+        <p class="bio-text">
+          <strong>Alessandra Mallon Breda é empresária e mentora de mulheres.</strong> Ela trabalha com mulheres que querem colocar a vida em ordem nas áreas que mais pesam: fé, família e negócios.
+        </p>
+
+        <p class="bio-text">
+          Sua fala tem autoridade porque vem de vivência real. Ela conhece, na prática, os desafios de liderar, construir, cuidar da família e manter a vida espiritual firme no meio de tudo isso.
+        </p>
+
+        <p class="bio-text">
+          A MPR nasceu dessa vivência, dessa experiência e dessa visão de que <strong>mulher nenhuma foi feita para crescer em uma área e se perder nas outras.</strong>
+        </p>
+
+        <!-- Exatamente as 4 provas de autoridade do documento -->
+        <div class="bio-proofs">
+          <div class="bio-proof reveal">
+            <div class="bio-proof-label">Empresária com vivência prática em negócios</div>
+          </div>
+          <div class="bio-proof reveal">
+            <div class="bio-proof-label">Experiência real com liderança, família e fé</div>
+          </div>
+          <div class="bio-proof reveal">
+            <div class="bio-proof-label">Metodologia própria: MPR — Mulheres Plenas e Reinantes</div>
+          </div>
+          <div class="bio-proof reveal">
+            <div class="bio-proof-label">Acompanhamento de mulheres em processo de mudança e reposicionamento</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SEÇÃO 8: COMO FUNCIONA
+══════════════════════════════════════ -->
+<section class="how-section" aria-label="Como funciona a MPR">
+  <div class="container">
+    <span class="section-label">Processo</span>
+    <h2 class="section-title">Como funciona</h2>
+
+    <div class="steps">
+
+      <article class="step reveal">
+        <div class="step-num" aria-hidden="true">01</div>
+        <div class="step-label">Passo 1</div>
+        <h3 class="step-title">Cadastro de avaliação</h3>
+        <p class="step-text">Você nos conta seu momento atual e algumas informações importantes sobre sua vida.</p>
+      </article>
+
+      <article class="step reveal">
+        <div class="step-num" aria-hidden="true">02</div>
+        <div class="step-label">Passo 2</div>
+        <h3 class="step-title">Análise de perfil</h3>
+        <p class="step-text">Nós olhamos suas respostas para entender se a mentoria faz sentido para o seu momento e para o que você está vivendo hoje.</p>
+      </article>
+
+      <article class="step reveal">
+        <div class="step-num" aria-hidden="true">03</div>
+        <div class="step-label">Passo 3</div>
+        <h3 class="step-title">Próximo passo</h3>
+        <p class="step-text">Se houver alinhamento de perfil, você poderá avançar para o próximo passo do processo.</p>
+      </article>
+
+    </div>
+
+    <p class="how-closing reveal">Esse cuidado existe porque a MPR não foi feita para atender todo mundo. Ela foi feita para atender as mulheres certas.</p>
+    <p class="how-note">A MPR tem formatos de 6 ou 12 meses, individual ou em grupo, totalmente online.</p>
+  </div>
+</section>
+
+<!-- CTA STRIP C — após Como Funciona -->
+<div class="cta-strip cta-strip--cream">
+  <p class="cta-strip-text">Pronta para entender se este é o seu momento?</p>
+  <a href="#diagnostico" class="cta-strip-btn" aria-label="Inscrever na avaliação">
+    <span>Quero me inscrever na avaliação <span class="cta-arrow">→</span></span>
+  </a>
+</div>
+
+<!-- ══════════════════════════════════════
+     SEÇÃO 9: AVALIAÇÃO INICIAL / DIAGNÓSTICO
+══════════════════════════════════════ -->
+<section class="diag-section" aria-label="Avaliação inicial">
+  <div class="container">
+    <div class="diag-inner">
+
+      <div class="diag-left">
+        <span class="section-label">Avaliação inicial</span>
+        <h2 class="diag-title">A avaliação inicial é o primeiro passo para entender o que hoje precisa de atenção, <em>ordem e direção</em> na sua vida.</h2>
+
+        <p class="diag-intro">Essa etapa ajuda a olhar para pontos importantes da vida atual, como:</p>
+
+        <ul class="diag-list">
+          <li class="reveal">Vida com Deus</li>
+          <li class="reveal">Casa e relacionamentos</li>
+          <li class="reveal">Identidade e propósito</li>
+          <li class="reveal">Trabalho e realização</li>
+          <li class="reveal">Paz interior</li>
+        </ul>
+
+        <p class="diag-closing reveal">O objetivo não é só conhecer seu perfil. É entender se este é o momento certo para o seu próximo passo.</p>
+      </div>
+
+      <div class="diag-right">
+        <div class="diag-ornament" aria-hidden="true">
+          <div class="diag-ornament-text">
+            <span class="diag-ornament-crown">♛</span>
+            "Cada mulher vive seu processo de forma única."
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SEÇÃO 10: FAQ
+══════════════════════════════════════ -->
+<section class="faq-section" aria-label="Perguntas frequentes">
+  <div class="container">
+    <div class="faq-inner">
+      <span class="section-label">Dúvidas frequentes</span>
+      <h2 class="section-title" style="margin-bottom:52px">Perguntas <em>frequentes</em></h2>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          A mentoria é online ou presencial?
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer">A MPR acontece de forma online. Existem formatos individuais e em grupo.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          Quanto tempo dura?
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer">A mentoria tem formatos de 6 ou 12 meses, dependendo da modalidade.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          Essa mentoria é para qualquer mulher?
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer">Não. A MPR foi criada para mulheres com perfil, momento e nível de compromisso compatíveis com a proposta.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          E se meu marido não apoiar?
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer">Essa é uma das dúvidas mais comuns. A aplicação ajuda a entender melhor o momento de cada mulher e o nível de prontidão para esse processo.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          E se eu já tiver feito outras mentorias e não terminado?
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer">A MPR não foi criada para ser só mais um conteúdo acumulado. Ela foi pensada para mulheres que realmente querem viver mudança.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          E se eu não tiver tempo?
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer">Muitas vezes, a questão não é só tempo. É prioridade, decisão e o momento que você escolhe dar atenção para áreas que estão pedindo mudança.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          Vou ter resultado?
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer">Cada mulher vive seu processo de forma única. O que a MPR entrega é direção, clareza, mudança de postura e um caminho de realinhamento para quem entra de forma séria.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          Como saber se tenho perfil?
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer">O primeiro passo é preencher o formulário para agendarmos uma avaliação inicial. A análise existe justamente para entender isso.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SEÇÃO 11: CTA FINAL + FORMULÁRIO
+══════════════════════════════════════ -->
+<section class="cta-section" id="diagnostico" aria-label="Formulário de contato">
+  <div class="cta-bg-text" aria-hidden="true">MPR</div>
+  <div class="container">
+
+    <p class="cta-eyebrow">Seu próximo passo</p>
+
+    <h2 class="cta-title">
+      Se você entendeu que não quer continuar crescendo em uma área enquanto as outras seguem pedindo socorro em <em>silêncio</em>, talvez este seja o seu momento.
+    </h2>
+
+    <p class="cta-sub">
+      Você não foi feita para viver dividida. Não foi feita para carregar tudo sozinha. Não foi feita para chamar de plenitude uma vida em que só uma parte floresce.<br><br>
+      A MPR é para mulheres que decidiram parar de aceitar uma vida pela metade. Mulheres que querem viver com mais ordem, paz, clareza e direção.
+    </p>
+
+    <div class="cta-form-wrapper">
+
+      <!-- Indicador de etapas -->
+      <div class="form-steps-indicator" aria-label="Progresso do formulário">
+        <div class="form-step-dot active" data-step="1"><span>1</span></div>
+        <div class="form-step-line"></div>
+        <div class="form-step-dot" data-step="2"><span>2</span></div>
+      </div>
+
+      <!-- ETAPA 1: Dados de contato -->
+      <form class="cta-form-step" id="form-step-1" action="#" onsubmit="return false;" aria-label="Etapa 1 — Dados de contato" novalidate>
+        <p class="form-step-label">Etapa 1 de 2 — Dados de contato</p>
+        <input type="text"  name="nome"     id="f-nome"  placeholder="Nome completo"       autocomplete="name"  aria-label="Nome completo" required />
+        <input type="tel"   name="telefone" id="f-tel"   placeholder="WhatsApp com DDD"    autocomplete="tel"   aria-label="WhatsApp"      required />
+        <input type="email" name="email"    id="f-email" placeholder="Seu melhor e-mail"   autocomplete="email" aria-label="E-mail"        required />
+        <button class="cta-submit" type="button" id="btn-next" aria-label="Avançar para etapa 2">
+          Continuar <span style="margin-left:8px">→</span>
+        </button>
+      </form>
+
+      <!-- ETAPA 2: Qualificação -->
+      <form class="cta-form-step hidden" id="form-step-2" action="#" onsubmit="return false;" aria-label="Etapa 2 — Qualificação" novalidate>
+        <p class="form-step-label">Etapa 2 de 2 — Conte um pouco sobre você</p>
+
+        <div class="form-question">
+          <label class="form-question-label">Qual área da sua vida está pesando mais hoje?</label>
+          <div class="form-options" role="group" aria-label="Área que mais pesa">
+            <label class="form-option"><input type="radio" name="area_peso" value="fe_espiritualidade" required /><span>Fé e espiritualidade</span></label>
+            <label class="form-option"><input type="radio" name="area_peso" value="casamento_familia" /><span>Casamento e família</span></label>
+            <label class="form-option"><input type="radio" name="area_peso" value="negocios_carreira" /><span>Negócios e carreira</span></label>
+            <label class="form-option"><input type="radio" name="area_peso" value="todas_igual" /><span>Todas ao mesmo tempo</span></label>
+          </div>
+        </div>
+
+        <div class="form-question">
+          <label class="form-question-label">Como você se define profissionalmente?</label>
+          <div class="form-options" role="group" aria-label="Perfil profissional">
+            <label class="form-option"><input type="radio" name="perfil" value="empresaria" required /><span>Empresária</span></label>
+            <label class="form-option"><input type="radio" name="perfil" value="profissional_liberal" /><span>Profissional liberal</span></label>
+            <label class="form-option"><input type="radio" name="perfil" value="herdeira_sucessora" /><span>Herdeira ou sucessora</span></label>
+            <label class="form-option"><input type="radio" name="perfil" value="mulher_agro" /><span>Mulher do agro</span></label>
+          </div>
+        </div>
+
+        <div class="form-question">
+          <label class="form-question-label">O que melhor descreve onde você está agora?</label>
+          <div class="form-options" role="group" aria-label="Momento atual">
+            <label class="form-option"><input type="radio" name="momento" value="pronta_agir" required /><span>Sei que preciso mudar e estou pronta para agir</span></label>
+            <label class="form-option"><input type="radio" name="momento" value="querendo_entender" /><span>Ainda estou entendendo se é o momento certo</span></label>
+            <label class="form-option"><input type="radio" name="momento" value="so_curiosidade" /><span>Por enquanto estou só conhecendo</span></label>
+          </div>
+        </div>
+
+        <button class="cta-submit" type="submit" id="btn-submit" aria-label="Dar o primeiro passo">
+          Dar o primeiro passo →
+        </button>
+      </form>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="footer-logo">Alessandra <em>Breda</em></div>
+  <div class="footer-copy">2025 © Todos os direitos reservados</div>
+  <a href="https://instagram.com/alessandrabreda" class="footer-ig" target="_blank" rel="noopener" aria-label="Instagram de Alessandra Breda">@alessandrabreda</a>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════
+   FAQ ACCORDION
+═══════════════════════════════════════ */
+document.querySelectorAll('.faq-item').forEach(item => {
+  const trigger = item.querySelector('.faq-question');
+
+  function toggle() {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  trigger.addEventListener('click', toggle);
+  trigger.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+  });
+});
+
+/* ═══════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════ */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal:not(.visible)'));
+    const idx = siblings.indexOf(entry.target);
+    entry.target.style.transitionDelay = Math.min(idx * 0.08, 0.4) + 's';
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+});
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ═══════════════════════════════════════
+   SMOOTH SCROLL
+═══════════════════════════════════════ */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+/* ═══════════════════════════════════════
+   CROWN — para animação ao sair do hover
+═══════════════════════════════════════ */
+const crown = document.querySelector('.logo-crown');
+if (crown) {
+  crown.addEventListener('mouseleave', () => {
+    crown.style.animation = 'none';
+    void crown.offsetWidth;
+    crown.style.animation = '';
+  });
+}
+
+/* ═══════════════════════════════════════
+   FORMULÁRIO EM 2 ETAPAS
+═══════════════════════════════════════ */
+(function() {
+  const step1    = document.getElementById('form-step-1');
+  const step2    = document.getElementById('form-step-2');
+  const btnNext  = document.getElementById('btn-next');
+  const dot1     = document.querySelector('.form-step-dot[data-step="1"]');
+  const dot2     = document.querySelector('.form-step-dot[data-step="2"]');
+  const stepLine = document.querySelector('.form-step-line');
+
+  if (!step1 || !step2 || !btnNext) return;
+
+  /* Validação etapa 1 */
+  function validateStep1() {
+    const nome  = document.getElementById('f-nome');
+    const tel   = document.getElementById('f-tel');
+    const email = document.getElementById('f-email');
+    if (!nome.value.trim())  { nome.focus();  return false; }
+    if (!tel.value.trim())   { tel.focus();   return false; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { email.focus(); return false; }
+    return true;
+  }
+
+  /* Avançar para etapa 2 */
+  btnNext.addEventListener('click', function() {
+    if (!validateStep1()) return;
+
+    step1.style.opacity   = '0';
+    step1.style.transform = 'translateX(-20px)';
+
+    setTimeout(function() {
+      step1.classList.add('hidden');
+
+      dot1.classList.remove('active');
+      dot1.classList.add('done');
+      dot1.innerHTML = '<span>✓</span>';
+      dot2.classList.add('active');
+      stepLine.classList.add('filled');
+
+      step2.classList.remove('hidden');
+      step2.style.opacity   = '0';
+      step2.style.transform = 'translateX(20px)';
+
+      requestAnimationFrame(function() {
+        step2.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+        step2.style.opacity    = '1';
+        step2.style.transform  = 'translateX(0)';
+      });
+
+      document.querySelector('.cta-form-wrapper').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 320);
+  });
+
+  /* Submit etapa 2 */
+  step2.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const groups = [
+      step2.querySelectorAll('input[name="area_peso"]'),
+      step2.querySelectorAll('input[name="perfil"]'),
+      step2.querySelectorAll('input[name="momento"]')
+    ];
+    const checked = (radios) => Array.from(radios).some(r => r.checked);
+    let valid = true;
+
+    groups.forEach(function(group) {
+      if (!checked(group)) {
+        valid = false;
+        const container = group[0].closest('.form-options');
+        container.style.outline = '1px solid rgba(201,168,76,0.6)';
+        setTimeout(() => container.style.outline = '', 2000);
+      }
+    });
+
+    if (!valid) return;
+
+    const btnSubmit = document.getElementById('btn-submit');
+    btnSubmit.textContent    = 'Enviado ✓';
+    btnSubmit.style.background   = 'var(--gold)';
+    btnSubmit.style.color        = 'var(--navy)';
+    btnSubmit.style.letterSpacing = '3px';
+    btnSubmit.disabled = true;
+
+    dot2.classList.remove('active');
+    dot2.classList.add('done');
+    dot2.innerHTML = '<span>✓</span>';
+  });
+})();
+</script>
+</body>
+</html>
