@@ -65,8 +65,8 @@ body {
   opacity: 0;
   transform: translateY(30px);
   transition:
-    opacity 0.7s cubic-bezier(0.25,0.1,0.25,1),
-    transform 0.7s cubic-bezier(0.25,0.1,0.25,1);
+    opacity 1.0s cubic-bezier(0.25,0.1,0.25,1),
+    transform 1.0s cubic-bezier(0.25,0.1,0.25,1);
   will-change: transform, opacity;
 }
 .reveal.visible {
@@ -118,6 +118,70 @@ section { padding: 110px 0; }
 .section-title em { font-style: italic; color: var(--gold); }
 
 /* ═══════════════════════════════════════
+   HEADER FIXO
+═══════════════════════════════════════ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--navy);
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.header-crown {
+  font-size: 18px;
+  color: var(--gold);
+  line-height: 1;
+}
+.header-logo-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+.header-logo-name em { font-style: italic; font-weight: 400; }
+
+.header-cta {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  text-decoration: none;
+  padding: 10px 22px;
+  border: 1px solid rgba(201,168,76,0.35);
+  transition: border-color 0.3s ease, color 0.3s ease;
+  white-space: nowrap;
+}
+.header-cta:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+@media (max-width: 768px) {
+  .site-header { height: 56px; }
+  .header-logo-name { font-size: 12px; letter-spacing: 2px; }
+  .header-cta { display: none; }
+}
+
+/* ═══════════════════════════════════════
    SEÇÃO 1: HERO
 ═══════════════════════════════════════ */
 .hero {
@@ -126,6 +190,7 @@ section { padding: 110px 0; }
   grid-template-columns: 60fr 40fr;
   position: relative;
   overflow: hidden;
+  padding: 0; /* anula o padding geral de section */
 }
 
 .hero::before {
@@ -149,7 +214,7 @@ section { padding: 110px 0; }
   z-index: 10;
   transform-origin: top center;
   transform: scaleY(0);
-  animation: scaleInVertical 1.1s cubic-bezier(0.25,0.1,0.25,1) 0.5s forwards;
+  animation: scaleInVertical 1.6s cubic-bezier(0.25,0.1,0.25,1) 0.9s forwards;
 }
 
 /* Hero esquerda */
@@ -163,14 +228,14 @@ section { padding: 110px 0; }
 }
 
 .hero-left > * {
-  animation: fadeInUp 0.8s cubic-bezier(0.25,0.1,0.25,1) forwards;
+  animation: fadeInUp 1.1s cubic-bezier(0.25,0.1,0.25,1) forwards;
   opacity: 0;
 }
-.hero-left > *:nth-child(1) { animation-delay: 0.15s; }
-.hero-left > *:nth-child(2) { animation-delay: 0.30s; }
-.hero-left > *:nth-child(3) { animation-delay: 0.45s; }
-.hero-left > *:nth-child(4) { animation-delay: 0.60s; }
-.hero-left > *:nth-child(5) { animation-delay: 0.75s; }
+.hero-left > *:nth-child(1) { animation-delay: 0.2s; }
+.hero-left > *:nth-child(2) { animation-delay: 0.45s; }
+.hero-left > *:nth-child(3) { animation-delay: 0.7s; }
+.hero-left > *:nth-child(4) { animation-delay: 0.95s; }
+.hero-left > *:nth-child(5) { animation-delay: 1.2s; }
 
 .logo-area { margin-bottom: 36px; }
 
@@ -1678,6 +1743,16 @@ footer {
 </head>
 <body>
 
+<header class="site-header" role="banner">
+  <div class="container">
+    <a href="#" class="header-logo" aria-label="Alessandra Breda">
+      <span class="header-crown" aria-hidden="true">♛</span>
+      <span class="header-logo-name">Alessandra <em>Breda</em></span>
+    </a>
+    <a href="#diagnostico" class="header-cta" aria-label="Agendar diagnóstico">Agendar diagnóstico</a>
+  </div>
+</header>
+
 <!-- ══════════════════════════════════════
      SEÇÃO 1: HERO
 ══════════════════════════════════════ -->
@@ -2322,7 +2397,7 @@ const observer = new IntersectionObserver((entries) => {
     if (!entry.isIntersecting) return;
     const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal:not(.visible)'));
     const idx = siblings.indexOf(entry.target);
-    entry.target.style.transitionDelay = Math.min(idx * 0.08, 0.4) + 's';
+    entry.target.style.transitionDelay = Math.min(idx * 0.13, 0.55) + 's';
     entry.target.classList.add('visible');
     observer.unobserve(entry.target);
   });
