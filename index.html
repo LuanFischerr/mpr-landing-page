@@ -603,6 +603,21 @@ section { padding: 110px 0; }
 }
 
 /* ═══════════════════════════════════════
+   FOTO FAMÍLIA — faixa full-width
+═══════════════════════════════════════ */
+.family-photo-strip {
+  width: 100%;
+  line-height: 0;
+}
+.family-photo-img {
+  width: 100%;
+  height: clamp(280px, 45vw, 620px);
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+/* ═══════════════════════════════════════
    SEÇÃO 4: SOLUÇÃO / PILARES (creme)
 ═══════════════════════════════════════ */
 .solution-section { background: var(--cream); }
@@ -1919,6 +1934,16 @@ footer {
     </div>
   </div>
 </section>
+
+<!-- FOTO FAMÍLIA — largura total -->
+<div class="family-photo-strip">
+  <img
+    src="./COLORIDAS/familia.png"
+    alt="Alessandra com a família"
+    class="family-photo-img"
+    loading="lazy"
+  />
+</div>
 
 <!-- ══════════════════════════════════════
      SEÇÃO 4: SOLUÇÃO / PILARES
