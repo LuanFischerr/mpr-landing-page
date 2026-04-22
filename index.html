@@ -2541,15 +2541,42 @@ if (crown) {
     if (!valid) return;
 
     const btnSubmit = document.getElementById('btn-submit');
-    btnSubmit.textContent    = 'Enviado ✓';
-    btnSubmit.style.background   = 'var(--gold)';
-    btnSubmit.style.color        = 'var(--navy)';
-    btnSubmit.style.letterSpacing = '3px';
+    btnSubmit.textContent = 'Enviando...';
     btnSubmit.disabled = true;
 
-    dot2.classList.remove('active');
-    dot2.classList.add('done');
-    dot2.innerHTML = '<span>✓</span>';
+    /* Coleta todos os dados das duas etapas */
+    const payload = {
+      nome:      document.getElementById('f-nome').value.trim(),
+      whatsapp:  document.getElementById('f-tel').value.trim(),
+      email:     document.getElementById('f-email').value.trim(),
+      area_peso: (step2.querySelector('input[name="area_peso"]:checked') || {}).value || '',
+      perfil:    (step2.querySelector('input[name="perfil"]:checked')    || {}).value || '',
+      momento:   (step2.querySelector('input[name="momento"]:checked')   || {}).value || ''
+    };
+
+    fetch('https://formspree.io/f/xjgjpayy', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body:    JSON.stringify(payload)
+    })
+    .then(function(resp) {
+      if (resp.ok) {
+        btnSubmit.textContent     = 'Enviado ✓';
+        btnSubmit.style.background    = 'var(--gold)';
+        btnSubmit.style.color         = 'var(--navy)';
+        btnSubmit.style.letterSpacing = '3px';
+        dot2.classList.remove('active');
+        dot2.classList.add('done');
+        dot2.innerHTML = '<span>✓</span>';
+      } else {
+        btnSubmit.textContent = 'Erro — tente novamente';
+        btnSubmit.disabled    = false;
+      }
+    })
+    .catch(function() {
+      btnSubmit.textContent = 'Erro — tente novamente';
+      btnSubmit.disabled    = false;
+    });
   });
 })();
 </script>
