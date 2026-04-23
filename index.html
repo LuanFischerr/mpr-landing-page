@@ -2566,12 +2566,21 @@ if (crown) {
       momento:   (step2.querySelector('input[name="momento"]:checked')   || {}).value || ''
     };
 
-    fetch('https://formspree.io/f/xjgjpayy', {
+    var formspreeReq = fetch('https://formspree.io/f/xjgjpayy', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body:    JSON.stringify(payload)
-    })
-    .then(function(resp) {
+    });
+
+    var makeReq = fetch('https://hook.us2.make.com/ptvg8cytiz1ho57cavr1torwvpdawulw', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload)
+    }).catch(function() { /* silently ignore Make.com errors */ });
+
+    Promise.all([formspreeReq, makeReq])
+    .then(function(results) {
+      var resp = results[0];
       if (resp.ok) {
         btnSubmit.textContent     = 'Enviado ✓';
         btnSubmit.style.background    = 'var(--gold)';
