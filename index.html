@@ -34,6 +34,7 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Jost', sans-serif;
+  font-size: 17px;
   background: var(--cream);
   color: var(--text-dark);
   overflow-x: hidden;
@@ -395,7 +396,7 @@ section { padding: 110px 0; }
 
 .pain-intro {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 500;
   line-height: 1.85;
   color: var(--text-mid);
@@ -410,7 +411,7 @@ section { padding: 110px 0; }
 }
 .pain-list li {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 19px;
+  font-size: 21px;
   color: var(--text-mid);
   padding: 13px 0;
   border-bottom: 1px solid rgba(0,0,0,0.06);
@@ -556,8 +557,15 @@ section { padding: 110px 0; }
   text-align: center;
   position: relative;
   transition: background 0.3s;
+  z-index: 1;
 }
 .choice-item:hover { background: rgba(201,168,76,0.07); }
+
+/* Colunas com badge "ou" precisam de z-index maior que a coluna seguinte */
+.choice-item:nth-child(1),
+.choice-item:nth-child(4) { z-index: 3; }
+.choice-item:nth-child(2),
+.choice-item:nth-child(5) { z-index: 2; }
 
 .choice-or {
   position: absolute;
@@ -570,7 +578,7 @@ section { padding: 110px 0; }
   font-weight: 600;
   letter-spacing: 1px;
   padding: 5px 9px;
-  z-index: 5;
+  z-index: 10;
   text-transform: uppercase;
   line-height: 1;
 }
@@ -579,7 +587,7 @@ section { padding: 110px 0; }
 
 .choice-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 19px;
+  font-size: 21px;
   font-weight: 500;
   color: rgba(255,255,255,0.95);
   line-height: 1.5;
@@ -709,7 +717,7 @@ section { padding: 110px 0; }
 }
 .pillar-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 1.75;
   color: var(--text-mid);
@@ -758,7 +766,7 @@ section { padding: 110px 0; }
 
 .result-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 1.65;
   color: var(--text-mid);
@@ -841,7 +849,7 @@ section { padding: 110px 0; }
 }
 .audience-list li {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 19px;
+  font-size: 21px;
   font-weight: 500;
   color: rgba(255,255,255,0.95);
   padding: 16px 20px;
@@ -967,7 +975,7 @@ section { padding: 110px 0; }
 
 .how-intro {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.75;
   color: rgba(255,255,255,0.6);
   margin-top: 16px;
@@ -1021,7 +1029,7 @@ section { padding: 110px 0; }
 }
 .step-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 1.75;
   color: rgba(255,255,255,0.92);
@@ -1088,7 +1096,7 @@ section { padding: 110px 0; }
 }
 .diag-list li {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 19px;
+  font-size: 21px;
   font-weight: 500;
   color: var(--text-mid);
   display: flex;
@@ -1423,7 +1431,18 @@ footer {
   }
   .hero-right {
     order: -1;
-    height: 65vw;
+    height: auto;
+    min-height: unset;
+    background: var(--navy-mid);
+  }
+  .hero-right .hero-photo {
+    position: relative;
+    inset: unset;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center top;
+    display: block;
   }
   .hero-left {
     padding: 52px 20px 60px;
@@ -1466,8 +1485,12 @@ footer {
   .bio-inner { grid-template-columns: 1fr; gap: 48px; }
   .bio-photo-frame {
     max-width: 100%;
-    aspect-ratio: 4/3;
+    aspect-ratio: 3/4;
   }
+  .bio-photo {
+    object-position: center top;
+  }
+  .bio-proof-label { white-space: nowrap; font-size: 12px; }
   .bio-frame-border { display: none; }
   .bio-text { font-size: 18px; }
   .bio-proofs { grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -1512,7 +1535,7 @@ footer {
    RESPONSIVE — SMALL MOBILE ≤ 480px
 ═══════════════════════════════════════ */
 @media (max-width: 480px) {
-  .hero-right { min-height: 70vw; max-height: 80vw; }
+  .hero-right { min-height: unset; max-height: unset; }
   .results-row.row-4,
   .results-row.row-3 { grid-template-columns: 1fr; }
   .bio-proofs { grid-template-columns: 1fr; }
@@ -1885,7 +1908,7 @@ footer {
         </div>
         <div class="weight-card reveal">
           <div class="weight-card-label">Quando a bênção vira desgaste</div>
-          <div class="weight-card-text">Até aquilo que deveria ser bênção começa a virar desgaste.</div>
+          <div class="weight-card-text">Até o que deveria ser leve se torna um peso.</div>
         </div>
         <div class="weight-card dark reveal">
           <div class="weight-card-label">Resultado</div>
@@ -1936,7 +1959,7 @@ footer {
       </div>
 
       <p class="belief-answer reveal">
-        "É possível crescer sem se perder. É possível prosperar sem viver esgotada. É possível construir sem deixar a casa emocional cair. É possível viver com mais equilíbrio, mais clareza e mais paz."
+        "Você pode viver dias mais leves, sem terminar a semana esgotada e sem carregar peso demais por dentro."
       </p>
 
       <p class="castle-metaphor reveal">Um castelo não fica de pé com um só pilar.</p>
@@ -2023,8 +2046,8 @@ footer {
 ══════════════════════════════════════ -->
 <section class="results-section" aria-label="O que muda com a MPR">
   <div class="container">
-    <div style="max-width:640px">
-      <h2 class="section-title">O que essa jornada pode <em>mudar</em> em você</h2>
+    <div>
+      <h2 class="section-title" style="white-space:nowrap">O que essa jornada pode <em>mudar</em> em você</h2>
     </div>
 
     <!-- 7 cards do documento: 4 na linha 1, 3 na linha 2 -->
@@ -2136,15 +2159,15 @@ footer {
         <h2 class="section-title">Alessandra<br><em>Mallon Breda</em></h2>
 
         <p class="bio-text">
-          <strong>Alessandra Mallon Breda é empresária e mentora de mulheres.</strong> Ela trabalha com mulheres que querem colocar a vida em ordem nas áreas que mais pesam: fé, família e negócios.
+          Ao longo da minha trajetória, já impactei mais de mil mulheres, sempre com o propósito de ajudá-las a colocar a vida em ordem nas áreas que mais pesam: fé, família e negócios.
         </p>
 
         <p class="bio-text">
-          Sua fala tem autoridade porque vem de vivência real. Ela conhece, na prática, os desafios de liderar, construir, cuidar da família e manter a vida espiritual firme no meio de tudo isso.
+          Tudo o que ensino nasce de vivência real. Eu conheço, na prática, os desafios de liderar, construir, cuidar da família e manter a vida espiritual firme no meio de tantas responsabilidades.
         </p>
 
         <p class="bio-text">
-          A MPR nasceu dessa vivência, dessa experiência e dessa visão de que <strong>mulher nenhuma foi feita para crescer em uma área e se perder nas outras.</strong>
+          A MPR nasceu dessa experiência e da certeza de que <strong>mulher nenhuma foi feita para crescer em uma área e se perder nas outras.</strong>
         </p>
 
         <!-- Exatamente as 4 provas de autoridade do documento -->
@@ -2153,7 +2176,7 @@ footer {
             <div class="bio-proof-label">Empresária com vivência prática em negócios</div>
           </div>
           <div class="bio-proof reveal">
-            <div class="bio-proof-label">Experiência real com<br>liderança, família e fé</div>
+            <div class="bio-proof-label">Experiência real com liderança, família e fé</div>
           </div>
           <div class="bio-proof reveal">
             <div class="bio-proof-label">Metodologia própria: MPR — Mulheres Plenas e Reinantes</div>
@@ -2174,35 +2197,35 @@ footer {
 <section class="how-section" aria-label="Como funciona a MPR">
   <div class="container">
     <span class="section-label">Processo</span>
-    <h2 class="section-title">Como funciona</h2>
+    <h2 class="section-title">Como funciona minha consultoria</h2>
 
     <div class="steps">
 
       <article class="step reveal">
         <div class="step-num" aria-hidden="true">01</div>
         <div class="step-label">Passo 1</div>
-        <h3 class="step-title">Cadastro de avaliação</h3>
-        <p class="step-text">Você nos conta seu momento atual e algumas informações importantes sobre sua vida.</p>
+        <h3 class="step-title">Cadastro inicial</h3>
+        <p class="step-text">Você preenche o formulário com suas informações para que eu e minha equipe possamos entender melhor o seu momento.</p>
       </article>
 
       <article class="step reveal">
         <div class="step-num" aria-hidden="true">02</div>
         <div class="step-label">Passo 2</div>
-        <h3 class="step-title">Análise de perfil</h3>
-        <p class="step-text">Nós olhamos suas respostas para entender se a mentoria faz sentido para o seu momento e para o que você está vivendo hoje.</p>
+        <h3 class="step-title">Diagnóstico gratuito</h3>
+        <p class="step-text">Depois disso, agendamos um diagnóstico online gratuito comigo para que eu possa ouvir você e entender sua realidade atual.</p>
       </article>
 
       <article class="step reveal">
         <div class="step-num" aria-hidden="true">03</div>
         <div class="step-label">Passo 3</div>
         <h3 class="step-title">Próximo passo</h3>
-        <p class="step-text">Se houver alinhamento de perfil, você poderá avançar para o próximo passo do processo.</p>
+        <p class="step-text">Se houver alinhamento, eu apresento a consultoria como próximo passo para que você avance com clareza e direção.</p>
       </article>
 
     </div>
 
     <p class="how-closing reveal">Esse cuidado existe porque a MPR não foi feita para atender todo mundo. Ela foi feita para atender as mulheres certas.</p>
-    <p class="how-note">A MPR tem formatos de 6 ou 12 meses, individual ou em grupo.</p>
+    <p class="how-note" style="text-align:center;display:block;width:100%">A MPR tem formatos de 6 ou 12 meses, individual ou em grupo.</p>
   </div>
 </section>
 
