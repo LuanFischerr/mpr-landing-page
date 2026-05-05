@@ -1490,7 +1490,8 @@ footer {
   .bio-photo {
     object-position: center top;
   }
-  .bio-proof-label { white-space: nowrap; font-size: 12px; }
+  .bio-proof-label { white-space: normal; font-size: 12px; }
+  .results-title { white-space: normal; }
   .bio-frame-border { display: none; }
   .bio-text { font-size: 18px; }
   .bio-proofs { grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -1543,6 +1544,9 @@ footer {
   .pillar { grid-template-columns: 1fr; }
   .pillar-num { font-size: 22px; }
 }
+
+/* Título "O que essa jornada pode mudar em você" — sem quebra no desktop */
+.results-title { white-space: nowrap; }
 
 /* ═══════════════════════════════════════
    CTA STRIPS INTERMEDIÁRIOS
@@ -2047,7 +2051,7 @@ footer {
 <section class="results-section" aria-label="O que muda com a MPR">
   <div class="container">
     <div>
-      <h2 class="section-title" style="white-space:nowrap">O que essa jornada pode <em>mudar</em> em você</h2>
+      <h2 class="section-title results-title">O que essa jornada pode <em>mudar</em> em você</h2>
     </div>
 
     <!-- 7 cards do documento: 4 na linha 1, 3 na linha 2 -->
