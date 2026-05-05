@@ -1491,7 +1491,11 @@ footer {
     object-position: center top;
   }
   .bio-proof-label { white-space: normal; font-size: 12px; }
-  .results-title { white-space: normal; }
+  .results-title {
+    white-space: nowrap;
+    font-size: clamp(13px, 4.5vw, 46px);
+    overflow: hidden;
+  }
   .bio-frame-border { display: none; }
   .bio-text { font-size: 18px; }
   .bio-proofs { grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -1545,8 +1549,12 @@ footer {
   .pillar-num { font-size: 22px; }
 }
 
-/* Título "O que essa jornada pode mudar em você" — sem quebra no desktop */
-.results-title { white-space: nowrap; }
+/* Título "O que essa jornada pode mudar em você" — 1 linha só onde cabe */
+.results-title {
+  white-space: nowrap;
+  font-size: clamp(15px, 3.5vw, 46px);
+  overflow: hidden;
+}
 
 /* ═══════════════════════════════════════
    CTA STRIPS INTERMEDIÁRIOS
